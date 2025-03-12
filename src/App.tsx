@@ -7,7 +7,7 @@ import { AnotherCountContextProvider } from "./contexts/AnotherCountContext";
 function App() {
 	return (
 		<AnotherCountContextProvider>
-			<h1>dodo-context</h1>
+			<h1>🦤 dodo-context 🦤</h1>
 			<p>a context demo</p>
 			<AddCount />
 			<ShowCount />
