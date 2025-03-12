@@ -12,7 +12,8 @@ export const CountContext = createContext<CountContextType | null>(null);
 type CountContextProviderProps = {
 	children: React.ReactNode;
 };
-export default function CountContextProvider({
+
+export function CountContextProvider({
 	children,
 }: Readonly<CountContextProviderProps>) {
 	const [count, setCount] = useState(0);

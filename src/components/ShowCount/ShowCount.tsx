@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { CountContext } from "../../contexts/CountContext";
+import { AnotherCountContext } from "../../contexts/AnotherCountContext";
 
 export default function ShowCount() {
-	const context = useContext(CountContext);
+	const context = useContext(AnotherCountContext);
 
 	return (
 		<div>
