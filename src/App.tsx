@@ -1,18 +1,14 @@
 import "./App.scss";
-import AddCount from "./components/AddCount/AddCount";
-import NoContext from "./components/NoContext/NoContext";
-import ShowCount from "./components/ShowCount/ShowCount";
-import { AnotherCountContextProvider } from "./contexts/AnotherCountContext";
+import Counter from "./components/Counter/Counter";
+import { CountReducerContextProvider } from "./contexts/CountReducerContext";
 
 function App() {
 	return (
-		<AnotherCountContextProvider>
+		<CountReducerContextProvider>
 			<h1>🦤 dodo-context 🦤</h1>
 			<p>a context demo</p>
-			<AddCount />
-			<ShowCount />
-			<NoContext />
-		</AnotherCountContextProvider>
+			<Counter />
+		</CountReducerContextProvider>
 	);
 }
 
