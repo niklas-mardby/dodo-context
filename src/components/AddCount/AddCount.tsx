@@ -1,23 +1,22 @@
-import { useContext } from "react";
-import { AnotherCountContext } from "../../contexts/AnotherCountContext";
+import { useAnotherCountContext } from "../../contexts/AnotherCountContext";
 
 export default function AddCount() {
-	const context = useContext(AnotherCountContext);
+	const { count, add, subtract } = useAnotherCountContext();
 
 	return (
 		<div>
 			<h2>AddCount</h2>
-			<p>Count: {context?.count}</p>
+			<p>Count: {count}</p>
 			<button
 				onClick={() => {
-					context?.add();
+					add();
 				}}
 			>
 				Add
 			</button>
 			<button
 				onClick={() => {
-					context?.subtract();
+					subtract();
 				}}
 			>
 				Subtract

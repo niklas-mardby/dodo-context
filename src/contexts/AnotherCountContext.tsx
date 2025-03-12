@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 
 // context
 export type AnotherCountContextType = {
@@ -7,8 +7,18 @@ export type AnotherCountContextType = {
 	subtract: () => void;
 };
 
-export const AnotherCountContext =
-	createContext<AnotherCountContextType | null>(null);
+const AnotherCountContext = createContext<AnotherCountContextType | null>(null);
+
+export const useAnotherCountContext = (): AnotherCountContextType => {
+	const context = useContext(AnotherCountContext);
+
+	if (!context) {
+		throw new Error(
+			"useAnotherCountContext must be used within the provider"
+		);
+	}
+	return context;
+};
 
 // context provider-komponent
 type AnotherCountContextProviderProps = {
@@ -33,8 +43,10 @@ export function AnotherCountContextProvider({
 	// sätt till 100
 	// sätt till 12
 
+	const value = useMemo(() => ({ count, add, subtract }), [count]);
+
 	return (
-		<AnotherCountContext.Provider value={{ count, add, subtract }}>
+		<AnotherCountContext.Provider value={value}>
 			{children}
 		</AnotherCountContext.Provider>
 	);
