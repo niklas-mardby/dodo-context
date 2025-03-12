@@ -1,4 +1,10 @@
-import { createContext, Dispatch, useContext, useReducer } from "react";
+import {
+	createContext,
+	Dispatch,
+	useContext,
+	useMemo,
+	useReducer,
+} from "react";
 
 // context
 export type CountReducerContextType = {
@@ -63,8 +69,9 @@ export function CountReducerContextProvider({
 
 	const [state, dispatch] = useReducer(counterReducer, initialState);
 
+	const value = useMemo(() => ({ state, dispatch }), [state]);
 	return (
-		<CountReducerContext.Provider value={{ state, dispatch }}>
+		<CountReducerContext.Provider value={value}>
 			{children}
 		</CountReducerContext.Provider>
 	);

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useMemo, useState } from "react";
 
 // context
 export type CountContextType = {
@@ -18,9 +18,8 @@ export function CountContextProvider({
 }: Readonly<CountContextProviderProps>) {
 	const [count, setCount] = useState(0);
 
+	const value = useMemo(() => ({ count, setCount }), [count]);
 	return (
-		<CountContext.Provider value={{ count, setCount }}>
-			{children}
-		</CountContext.Provider>
+		<CountContext.Provider value={value}>{children}</CountContext.Provider>
 	);
 }
