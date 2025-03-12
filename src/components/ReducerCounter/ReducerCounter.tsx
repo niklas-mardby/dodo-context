@@ -4,16 +4,25 @@ type CounterState = {
 	count: number;
 };
 
-type CounterAction = {
-	type: "INCREMENT" | "DECREMENT" | "RESET";
-};
+type CounterAction =
+	| {
+			type: "INCREMENT";
+			payload: number;
+	  }
+	| {
+			type: "DECREMENT";
+			payload: number;
+	  }
+	| {
+			type: "RESET";
+	  };
 
 function counterReducer(state: CounterState, action: CounterAction) {
 	switch (action.type) {
 		case "INCREMENT":
-			return { count: state.count + 1 };
+			return { count: state.count + action.payload };
 		case "DECREMENT":
-			return { count: state.count - 1 };
+			return { count: state.count - action.payload };
 		case "RESET":
 			return { count: 0 };
 		default:
@@ -35,10 +44,24 @@ export default function ReducerCounter() {
 			<p>Count: {state.count}</p>
 			<button
 				onClick={() => {
-					dispatch({ type: "INCREMENT" });
+					dispatch({ type: "INCREMENT", payload: 1 });
 				}}
 			>
-				Add
+				Increment
+			</button>
+			<button
+				onClick={() => {
+					dispatch({ type: "INCREMENT", payload: 10 });
+				}}
+			>
+				+10
+			</button>
+			<button
+				onClick={() => {
+					dispatch({ type: "DECREMENT", payload: 1 });
+				}}
+			>
+				Decrement
 			</button>
 		</div>
 	);
