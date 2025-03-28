@@ -6,16 +6,18 @@ import {
 	useReducer,
 } from "react";
 
-// context
+// ================================= typa upp contexten =================================
 export type CountReducerContextType = {
 	state: CounterState;
 	dispatch: Dispatch<CounterAction>;
 };
 
+// ================================= typa upp state =================================
 type CounterState = {
 	count: number;
 };
 
+// ================================= typa upp dispatch =================================
 type CounterAction =
 	| {
 			type: "INCREMENT";
